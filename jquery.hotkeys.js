@@ -43,8 +43,9 @@
 	
 		handleObj.handler = function( event ) {
 			// Don't fire in text-accepting inputs that we didn't directly bind to
+			// Here we need else to exclude PASSWORD fields, which are not binded directly
 			if ( this !== event.target && (/textarea|select/i.test( event.target.nodeName ) ||
-				 event.target.type === "text") ) {
+				 event.target.type === "text" || event.target.type === "password") ) {
 				return;
 			}
 			
